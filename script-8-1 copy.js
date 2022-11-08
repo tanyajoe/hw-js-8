@@ -29,26 +29,30 @@ const months = [
   "December",
 ];
 
-expenses.forEach(function (item) {
-  // console.log(`Массив длиной ${item.expenses.length}`);
-  for (let i = 0; i < item.expenses.length; i++) {
-    //console.log(`Проверяем значение ${item.expenses[i]}`);
-    if (item.expenses[i] > 1000) {
-      /*  console.log(
+function count(expenses, price) {
+  expenses.forEach(function (item) {
+    // console.log(`Массив длиной ${item.expenses.length}`);
+    for (let i = 0; i < item.expenses.length; i++) {
+      //console.log(`Проверяем значение ${item.expenses[i]}`);
+      if (item.expenses[i] > price) {
+        /*  console.log(
         `Значение ${item.expenses[i]} подходит под условие сложения: прибавляем к текущей сумме ${sum}`
       ); */
-      sum += item.expenses[i];
-      //console.log(`Текуущая сумма ${sum}`);
-    } else {
-      let date = new Date(2022, i);
-      console.log(
-        `Month ${months[date.getMonth()]} with expenses <= 1000: ${
-          item.expenses[i]
-        }`
-      );
-      //console.log(`Значение ${item.expenses[i]} не подходит`);
+        sum += item.expenses[i];
+        //console.log(`Текуущая сумма ${sum}`);
+      } else {
+        let date = new Date(2022, i);
+        console.log(
+          `Month ${months[date.getMonth()]} with expenses <= ${price}: ${
+            item.expenses[i]
+          }`
+        );
+        //console.log(`Значение ${item.expenses[i]} не подходит`);
+      }
     }
-  }
-  // console.log(`Итоговая сумма ${sum}`);
-});
-console.log(`Итоговая сумма c суммой затрат больше 1000: ${sum}`);
+    // console.log(`Итоговая сумма ${sum}`);
+  });
+  console.log(`Итоговая сумма c суммой затрат больше 1000: ${sum}`);
+}
+
+count(expenses, 1000);
